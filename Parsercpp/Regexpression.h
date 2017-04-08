@@ -8,16 +8,16 @@
 
 #include <vector>
 
-typedef <char[],char[]> regex;
+typedef const std::pair<char*,char*>* regexp;
 
 class Regexpression{
-    std::vector* regexcon<char[],char []>;
+    std::vector<regexp>* regcon;
 
 
 public:
     Regexpression();
-    void setRegex(regex ,...);
-    int getSize();
+    void setRegex(regexp regexp1, ...);
+    unsigned long getSize();
 };
 
 #endif //PARSER_REGEXPRESSION_H
