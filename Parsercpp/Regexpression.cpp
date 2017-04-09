@@ -7,9 +7,10 @@
 
 Regexpression::Regexpression() {
 
+
 }
 
-void Regexpression::setRegex(regexp regexp1, ...){
+void Regexpression::setRegex( regexp regexp1, ... ){
 
     va_list regex;
     //va_start(regex, regexp1);
@@ -21,5 +22,7 @@ void Regexpression::setRegex(regexp regexp1, ...){
 
 
 unsigned long Regexpression::getSize() {
+
     return regcon->size();
+
 }

@@ -11,13 +11,14 @@
 typedef const std::pair<char*,char*>* regexp;
 
 class Regexpression{
-    std::vector<regexp>* regcon;
 
+    std::vector<regexp>* regcon;
 
 public:
     Regexpression();
-    void setRegex(regexp regexp1, ...);
+    void setRegex( regexp regexp1, ... );
     unsigned long getSize();
+
 };
 
 #endif //PARSER_REGEXPRESSION_H
