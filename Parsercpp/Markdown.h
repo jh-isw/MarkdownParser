@@ -9,16 +9,15 @@
 #include "InputString.h"
 
 class Markdown{
-    std::string* formatedstring;
 
+    Regexpression* regex;
+    InputString* instr;
+    std::string replaceMarkdown();
 
 public:
-    Markdown(Regexpression*, InputString*);
-    void replaceMarkdown();
-    void createHtmlFile();
+    Markdown( Regexpression*, InputString* );
+    void createHtmlFile( std::string );
 
 };
-
-
 
 #endif //PARSER_MARKDOWN_H

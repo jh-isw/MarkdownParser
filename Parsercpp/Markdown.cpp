@@ -4,14 +4,31 @@
 
 #include "Markdown.h"
 
-Markdown::Markdown(Regexpression* regex, InputString* instr) {
+Markdown::Markdown( Regexpression* regex, InputString* instr ) {
+
+    this->regex = regex;
+    this->instr = instr;
 
 }
 
-void Markdown::replaceMarkdown() {
+std::string Markdown::replaceMarkdown() {
+
+    return instr->getLine();
 
 }
 
-void Markdown::createHtmlFile() {
+void Markdown::createHtmlFile( std::string path_file ) {
+
+    std::string newline = replaceMarkdown();
+    std::ofstream htmlfile( path_file );
+    htmlfile << newline;
+
+    while ( !instr->isEof() ) {
+        htmlfile << std::endl;
+        newline = replaceMarkdown();
+        htmlfile << newline;
+    }
+
+    htmlfile.close();
 
 }
