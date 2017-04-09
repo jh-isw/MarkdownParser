@@ -4,16 +4,31 @@
 
 #include "InputString.h"
 
-InputString::InputString(char* instr) {
+InputString::InputString( std::fstream *mdfile ) {
+
+    this->mdfile = mdfile;
 
 }
 
-std::string InputString::getStr() {
+std::string InputString::getLine() {
 
-    return std::__cxx11::string();
+    char buff[100];
+    if ( mdfile->getline( buff, 100 ) )
+        return buff;
+
+}
+
+bool InputString::isEof() {
+
+    if ( mdfile->eof() == true )
+        return true;
+    return false;
+
 }
 
 InputString::~InputString() {
 
+    mdfile->close();
+    delete ( mdfile );
 
 }

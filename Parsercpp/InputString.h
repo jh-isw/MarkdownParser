@@ -7,15 +7,17 @@
 
 #include <iostream>
 #include <sstream>
+#include <fstream>
 
 class InputString{
-    std::string* instring;
-    ~InputString();
+
+    std::fstream* mdfile;
 
 public:
-    InputString(char[]);
-    //InputString();    std Stream als input
-    std::string getStr();
+    InputString( std::fstream* );
+    std::string getLine();
+    bool isEof();
+    ~InputString();
 
 };
 
