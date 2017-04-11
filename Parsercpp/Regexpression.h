@@ -7,17 +7,22 @@
 
 
 #include <vector>
+#include <regex>
 
-typedef const std::pair<char*,char*>* regexp;
+typedef const std::regex* regextype;
 
 class Regexpression{
 
-    std::vector<regexp>* regcon;
+
 
 public:
     Regexpression();
-    void setRegex( regexp regexp1, ... );
-    unsigned long getSize();
+    std::string regexh1(std::string);
+    std::string regexh2(std::string);
+    std::string regexlist(std::string);
+    std::string regexbold(std::string);
+    std::string regexitalic(std::string);
+    std::string regexquote(std::string);
 
 };
 
