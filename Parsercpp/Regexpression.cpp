@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdarg.h>
+#include <iostream>
 #include "Regexpression.h"
 
 Regexpression::Regexpression() {
@@ -11,24 +12,29 @@ Regexpression::Regexpression() {
 
 }
 
-std::string Regexpression::regexh1( std::string line ) {
+void Regexpression::regexh1( char* strbuff ) {
 
-    std::regex regh1search( "^#{1}[^#]" );
+    //std::regex regh1search( "^#{1}[^#]" );
+    std::regex regh1search( "#" );
 
-    if(std::regex_search( line,regh1search )) {
 
+    if( std::regex_search( strbuff, regh1search )) {
+
+        std::cout << "#########################" << std::endl;
         std::string retline;
-        std::regex regh1op( "^#{1}" );
-        std::regex regh1cl( "([\\s\\t]+)$|[^\\s\\t]$" );
-        retline = regex_replace( line, regh1op, "<h1>" );
-        retline = regex_replace( retline, regh1cl, "</h1>" );
-        return retline;
+        std::regex regh1op( "#{1}[^#]" );
+        std::regex regh1cl( "([\\s\\t]+)\\n|[^\\s\\t]\\n" );
+        retline = std::regex_replace( strbuff, regh1op, "<h1>" );
+        retline = std::regex_replace( strbuff, regh1cl, "</h1>" );
+        std::string* strback = new std::string(retline);
+        std::cout << strbuff << std::endl;
+        //return retline;
 
-    } else
-        return line;
+    } /*else
+        return line;*/
 
 }
-
+/*
 std::string Regexpression::regexh2( std::string line ) {
 
     std::regex regh2search( "^#{2}[^#]" );
@@ -53,7 +59,7 @@ std::string Regexpression::regexlist(std::string) {
 
 std::string Regexpression::regexbold(std::string line) {
 
-    /*
+
     std::regex regboldsearch( "^\*{2}(^\\s)" );
 
     if(std::regex_search( line,regboldsearch )) {
@@ -67,7 +73,7 @@ std::string Regexpression::regexbold(std::string line) {
 
     } else
         return line;
-    */
+
 }
 
 std::string Regexpression::regexitalic(std::string) {
@@ -76,4 +82,4 @@ std::string Regexpression::regexitalic(std::string) {
 
 std::string Regexpression::regexquote(std::string) {
     return std::__cxx11::string();
-}
+}*/

@@ -11,12 +11,15 @@
 
 class InputString{
 
-    std::fstream* mdfile;
+    std::ifstream* mdfile;
+    char* buffstr;
+    void loadBuffstr();
 
 public:
-    InputString( std::fstream* );
+    InputString( std::ifstream* );
     std::string getLine();
     bool isEof();
+    char* getBuffStr();
     ~InputString();
 
 };

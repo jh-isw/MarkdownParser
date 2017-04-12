@@ -17,12 +17,12 @@ class Regexpression{
 
 public:
     Regexpression();
-    std::string regexh1(std::string);
-    std::string regexh2(std::string);
+    void regexh1(char*);
+/*    std::string regexh2(std::string);
     std::string regexlist(std::string);
     std::string regexbold(std::string);
     std::string regexitalic(std::string);
-    std::string regexquote(std::string);
+    std::string regexquote(std::string);*/
 
 };
 

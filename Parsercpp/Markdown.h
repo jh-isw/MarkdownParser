@@ -10,12 +10,13 @@
 
 class Markdown{
 
-    Regexpression* regex;
     InputString* instr;
-    std::string replaceMarkdown();
+    Regexpression* regexp;
+
+    void replaceMarkdown(char*);
 
 public:
-    Markdown( Regexpression*, InputString* );
+    Markdown( InputString*, Regexpression* );
     void createHtmlFile( std::string );
 
 };
