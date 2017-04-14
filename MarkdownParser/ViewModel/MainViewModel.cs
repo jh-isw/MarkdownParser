@@ -1,4 +1,8 @@
+using System;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Messaging;
+using System.IO;
 
 namespace MarkdownParser.ViewModel
 {
@@ -16,6 +20,28 @@ namespace MarkdownParser.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        public string WindowTitle { get; private set; }
+        private string theContent;
+
+        public string TheContent
+        {
+            get { return theContent; }
+            set
+            {
+                if (theContent == value)
+                {
+                    return;
+                }
+
+                theContent = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public RelayCommand GenerateHtmlCommand { get; private set; }
+        public RelayCommand OpenCommand { get; private set; }
+        public RelayCommand ExitCommand { get; private set; }
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
@@ -24,15 +50,44 @@ namespace MarkdownParser.ViewModel
             if (IsInDesignMode)
             {
                 // Code runs in Blend --> create design time data.
-                WindowTitle = "MvvSample (Designmode)";
+                WindowTitle = "MarkdownParser (Designmode)";
+                TheContent = "This is our sample content";
             }
             else
             {
                 // Code runs "for real"
-                WindowTitle = "MvvSample";
+                WindowTitle = "MarkdownParser";
+                TheContent = "";
+
+                GenerateHtmlCommand = new RelayCommand(OnGenerateHtmlExecuted, OnGenerateHtmlCanExecute);
+                OpenCommand = new RelayCommand(OnOpenExecuted, null);
+                ExitCommand = new RelayCommand(OnExitExecuted, null);
             }
         }
 
-        public string WindowTitle { get; private set; }
+        private void OnOpenExecuted()
+        {
+            Messenger.Default.Send<NotificationMessageAction<string>>(new NotificationMessageAction<string>("open", receiveFilename));
+        }
+
+        private void OnExitExecuted()
+        {
+            Application.Current.MainWindow.Close();
+        }
+
+        private void OnGenerateHtmlExecuted()
+        {
+            Console.WriteLine(TheContent);
+        }
+
+        private bool OnGenerateHtmlCanExecute()
+        {
+            return !String.IsNullOrEmpty(TheContent);
+        }
+
+        private void receiveFilename(string filename)
+        {
+            TheContent = File.ReadAllText(filename);
+        }
     }
 }

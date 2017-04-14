@@ -5,10 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MarkdownParser"
         mc:Ignorable="d"
-        Height="350" Width="525"
+        Height="600" Width="800"
         Title="{Binding WindowTitle, Mode=OneWay}"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
-    <Grid>
-        
-    </Grid>
+    <Window.IsEnabled>
+        <Binding Path="BindableProperty" Source="{StaticResource MessageListener}"/>
+    </Window.IsEnabled>
+    <DockPanel LastChildFill="True">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="_Open" Command="{Binding OpenCommand}" />
+                <Separator />
+                <MenuItem Header="_Exit" Command="{Binding ExitCommand}"/>
+            </MenuItem>
+        </Menu>
+        <StackPanel Margin="10">
+            <TextBox Text="{Binding TheContent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 AcceptsReturn="True" TextWrapping="Wrap" MinHeight="500" MaxHeight="500"
+                 VerticalScrollBarVisibility="Auto" />
+            <Button Content="Generate HTML" Height="20" HorizontalAlignment="Right"
+                Command="{Binding GenerateHtmlCommand}" />
+        </StackPanel>
+    </DockPanel>
 </Window>

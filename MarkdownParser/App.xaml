@@ -11,6 +11,7 @@
       <vm:ViewModelLocator x:Key="Locator"
                            d:IsDataSource="True"
                            xmlns:vm="clr-namespace:MarkdownParser.ViewModel" />
+      <local:MessageListener x:Key="MessageListener" />
     </ResourceDictionary>
   </Application.Resources>
 </Application>
