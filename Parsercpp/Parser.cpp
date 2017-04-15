@@ -20,6 +20,7 @@ int main() {
     }
 
     regexpression = new Regexpression();
+
     markdown = new Markdown( instring,  regexpression );
 
 

@@ -7,6 +7,9 @@
 InputString::InputString( std::ifstream *mdfile ) {
 
     this->mdfile = mdfile;
+    strstream = new std::stringstream();
+    *strstream << mdfile->rdbuf();
+
     loadBuffstr();
 
 }
@@ -22,6 +25,8 @@ void InputString::loadBuffstr() {
         buffstr = new char[size];
 
         stream->sgetn(buffstr, size);
+
+
     }else
         std::cout << "failed to load Bufferstring" << std::endl;
 
@@ -49,6 +54,11 @@ bool InputString::isEof() {
 
 char *InputString::getBuffStr() {
     return buffstr;
+}
+
+
+std::stringstream* InputString::getStrStream() {
+    return strstream;
 }
 
 InputString::~InputString() {

@@ -13,10 +13,12 @@ Markdown::Markdown( InputString* instr, Regexpression* regexp ) {
 }
 
 
-void Markdown::replaceMarkdown(char* buffstr) {
+void Markdown::replaceMarkdown(std::stringstream* strstream) {
 
-    std::string retline;
-    regexp->regexh1(buffstr);
+    regexp->regexh1(strstream);
+    regexp->regexh2(strstream);
+    std::cout << strstream->rdbuf();
+    std::cout << "end of stream" << std::endl;
    // retline = regexp->regexh2(retline);
 
     //return retline;
@@ -28,14 +30,14 @@ void Markdown::createHtmlFile( std::string path_file ) {
 
     std::ofstream htmlfile( path_file );
 
-    replaceMarkdown( instr->getBuffStr() );
+    replaceMarkdown( instr->getStrStream() );
     //std::cout << instr->getBuffStr() << std::endl;
 
 
     //newline = instr->getLine();
     //std::cout << newline << std::endl;
     //std::cout << instr->getBuffStr() << std::endl;
-    htmlfile << instr->getBuffStr() << std::endl;
+    htmlfile << instr->getStrStream() << std::endl;
 
     htmlfile.close();
 

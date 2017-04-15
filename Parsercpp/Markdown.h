@@ -13,7 +13,7 @@ class Markdown{
     InputString* instr;
     Regexpression* regexp;
 
-    void replaceMarkdown(char*);
+    void replaceMarkdown(std::stringstream*);
 
 public:
     Markdown( InputString*, Regexpression* );
