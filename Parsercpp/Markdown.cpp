@@ -2,32 +2,42 @@
 // Created by blacknote on 08.04.17.
 //
 
+#include <regex>
 #include "Markdown.h"
 
-Markdown::Markdown( Regexpression* regex, InputString* instr ) {
+Markdown::Markdown( InputString* instr, Regexpression* regexp ) {
 
-    this->regex = regex;
     this->instr = instr;
+    this->regexp = regexp;
 
 }
 
-std::string Markdown::replaceMarkdown() {
 
-    return instr->getLine();
+void Markdown::replaceMarkdown(std::stringstream* strstream) {
+
+    regexp->regexh1(strstream);
+    regexp->regexh2(strstream);
+    std::cout << strstream->rdbuf();
+    std::cout << "end of stream" << std::endl;
+   // retline = regexp->regexh2(retline);
+
+    //return retline;
 
 }
+
 
 void Markdown::createHtmlFile( std::string path_file ) {
 
-    std::string newline = replaceMarkdown();
     std::ofstream htmlfile( path_file );
-    htmlfile << newline;
 
-    while ( !instr->isEof() ) {
-        htmlfile << std::endl;
-        newline = replaceMarkdown();
-        htmlfile << newline;
-    }
+    replaceMarkdown( instr->getStrStream() );
+    //std::cout << instr->getBuffStr() << std::endl;
+
+
+    //newline = instr->getLine();
+    //std::cout << newline << std::endl;
+    //std::cout << instr->getBuffStr() << std::endl;
+    htmlfile << instr->getStrStream() << std::endl;
 
     htmlfile.close();
 
