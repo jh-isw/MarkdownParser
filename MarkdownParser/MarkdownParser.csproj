@@ -70,6 +70,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ICloseApp.cs" />
+    <Compile Include="MarkdownParserCore.cs" />
     <Compile Include="MessageListener.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />

@@ -39,8 +39,8 @@ namespace MarkdownParser.ViewModel
         }
 
         public RelayCommand GenerateHtmlCommand { get; private set; }
-        public RelayCommand OpenCommand { get; private set; }
-        public RelayCommand ExitCommand { get; private set; }
+        public RelayCommand MenuItemOpenCommand { get; private set; }
+        public RelayCommand MenuItemExitCommand { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
@@ -60,19 +60,25 @@ namespace MarkdownParser.ViewModel
                 TheContent = "";
 
                 GenerateHtmlCommand = new RelayCommand(OnGenerateHtmlExecuted, OnGenerateHtmlCanExecute);
-                OpenCommand = new RelayCommand(OnOpenExecuted, null);
-                ExitCommand = new RelayCommand(OnExitExecuted, null);
+                MenuItemOpenCommand = new RelayCommand(OnMenuItemOpenExecuted, null);
+                MenuItemExitCommand = new RelayCommand(OnMenuItemExitExecuted, null);
             }
         }
 
-        private void OnOpenExecuted()
+        private void OnMenuItemOpenExecuted()
         {
             Messenger.Default.Send<NotificationMessageAction<string>>(new NotificationMessageAction<string>("open", receiveFilename));
         }
 
-        private void OnExitExecuted()
+        private void OnMenuItemExitExecuted()
         {
-            Application.Current.MainWindow.Close();
+            //Application.Current.MainWindow.Close();
+            Console.WriteLine("2 + 3 = " + MarkdownParserCore.Add(2.0, 3.0));
+            /*
+             * Assistent für verwaltetes Debuggen "PInvokeStackImbalance"  ist aufgetreten.
+  HResult=0x00000000
+  Nachricht = **Assistent für verwaltetes Debuggen "PInvokeStackImbalance" :** "Ein Aufruf an die PInvoke-Funktion "MarkdownParser!MarkdownParser.MarkdownParserCore::Add" hat das Gleichgewicht des Stapels gestört. Wahrscheinlich stimmt die verwaltete PInvoke-Signatur nicht mit der nicht verwalteten Zielsignatur überein. Überprüfen Sie, ob die Aufrufkonvention und die Parameter der PInvoke-Signatur mit der nicht verwalteten Zielsignatur übereinstimmen."
+            */
         }
 
         private void OnGenerateHtmlExecuted()
