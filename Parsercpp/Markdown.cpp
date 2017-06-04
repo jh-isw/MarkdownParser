@@ -17,6 +17,7 @@ void Markdown::replaceMarkdown(std::stringstream* strstream) {
 
     regexp->regexh1(strstream);
     regexp->regexh2(strstream);
+    regexp->regexbold(strstream);
     std::cout << strstream->rdbuf();
     std::cout << "end of stream" << std::endl;
    // retline = regexp->regexh2(retline);
