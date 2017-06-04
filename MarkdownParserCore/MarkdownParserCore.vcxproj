@@ -138,7 +138,9 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MathFuncsDll.h" />
+    <ClInclude Include="InputString.h" />
+    <ClInclude Include="Markdown.h" />
+    <ClInclude Include="Regexpression.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -157,8 +159,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="InputString.cpp" />
+    <ClCompile Include="Markdown.cpp" />
     <ClCompile Include="MarkdownParserCore.cpp" />
-    <ClCompile Include="MyMathFuncs.cpp" />
+    <ClCompile Include="Regexpression.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -74,11 +74,8 @@ namespace MarkdownParser.ViewModel
         {
             //Application.Current.MainWindow.Close();
             Console.WriteLine("2 + 3 = " + MarkdownParserCore.Add(2.0, 3.0));
-            /*
-             * Assistent für verwaltetes Debuggen "PInvokeStackImbalance"  ist aufgetreten.
-  HResult=0x00000000
-  Nachricht = **Assistent für verwaltetes Debuggen "PInvokeStackImbalance" :** "Ein Aufruf an die PInvoke-Funktion "MarkdownParser!MarkdownParser.MarkdownParserCore::Add" hat das Gleichgewicht des Stapels gestört. Wahrscheinlich stimmt die verwaltete PInvoke-Signatur nicht mit der nicht verwalteten Zielsignatur überein. Überprüfen Sie, ob die Aufrufkonvention und die Parameter der PInvoke-Signatur mit der nicht verwalteten Zielsignatur übereinstimmen."
-            */
+
+            Console.WriteLine("parse returned: " + MarkdownParserCore.parse());
         }
 
         private void OnGenerateHtmlExecuted()

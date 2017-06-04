@@ -9,10 +9,10 @@ namespace MarkdownParser
 {
     class MarkdownParserCore
     {
-        [DllImport("MarkdownParserCore.dll")]
-        public static extern double Add(double a, double b);
+        [DllImport(@"..\..\..\Debug\MarkdownParserCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern double Add(double a, double b); // TODO: just a test
 
-        [DllImport("msvcrt.dll")]
-        public static extern int puts(string c);
+        [DllImport(@"..\..\..\Debug\MarkdownParserCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int parse();
     }
 }
