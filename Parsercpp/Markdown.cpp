@@ -38,7 +38,7 @@ void Markdown::createHtmlFile( std::string path_file ) {
     //newline = instr->getLine();
     //std::cout << newline << std::endl;
     //std::cout << instr->getBuffStr() << std::endl;
-    htmlfile << instr->getStrStream() << std::endl;
+    htmlfile << instr->getStrStream()->str() << std::endl;
 
     htmlfile.close();
 
