@@ -73,14 +73,11 @@ namespace MarkdownParser.ViewModel
         private void OnMenuItemExitExecuted()
         {
             //Application.Current.MainWindow.Close();
-            Console.WriteLine("2 + 3 = " + MarkdownParserCore.Add(2.0, 3.0));
-
-            Console.WriteLine("parse returned: " + MarkdownParserCore.parse());
         }
 
         private void OnGenerateHtmlExecuted()
         {
-            Console.WriteLine(TheContent);
+            Console.WriteLine("parse returned: " + MarkdownParserCore.parse());
         }
 
         private bool OnGenerateHtmlCanExecute()
